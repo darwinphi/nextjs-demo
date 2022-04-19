@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 export default function ProductDetails({ product }) {
   const router = useRouter();
   const { id } = router.query;
-  console.log(product);
+
   return (
     <>
       <h1>{id}</h1>
@@ -28,6 +28,10 @@ export async function getStaticProps({ params }) {
   const product = data.products.find((product) => {
     return product.id === params.id;
   });
+
+  if (!product) {
+    return { notFound: true };
+  }
 
   return {
     props: {
