@@ -5,13 +5,18 @@ import Hello from "./hello";
 
 import fs from "fs/promises";
 import path from "path";
+import Link from "next/link";
 
 export default function Home({ products }) {
   return (
     <div>
       <Hello name="Darwin" />
-      {products.map((prop) => {
-        return <p key={prop.id}>{prop.title}</p>;
+      {products.map((product) => {
+        return (
+          <p key={product.id}>
+            <Link href={`/${product.id}`}>{product.title}</Link>
+          </p>
+        );
       })}
     </div>
   );
