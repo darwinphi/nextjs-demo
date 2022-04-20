@@ -6,8 +6,8 @@ async function getTodos(url) {
   return await res.json();
 }
 
-export default function Todos() {
-  const [todos, setTodos] = useState(null);
+export default function Todos({ todosData }) {
+  const [todos, setTodos] = useState(todosData);
   const { data, error } = useSWR(
     "https://jsonplaceholder.typicode.com/todos",
     getTodos
@@ -32,4 +32,19 @@ export default function Todos() {
       </ul>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+
+  const todosData = data.map((d) => {
+    return { id: d.id, title: d.title };
+  });
+
+  return {
+    props: {
+      todosData: todosData,
+    },
+  };
 }
