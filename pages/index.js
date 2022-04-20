@@ -9,7 +9,11 @@ import Link from "next/link";
 
 export default function Home({ products }) {
   return (
-    <div>
+    <>
+      <Head>
+        <title>Products</title>
+        <meta name="description" content="List of products" />
+      </Head>
       <Hello name="Darwin" />
       {products.map((product) => {
         return (
@@ -18,7 +22,7 @@ export default function Home({ products }) {
           </p>
         );
       })}
-    </div>
+    </>
   );
 }
 
