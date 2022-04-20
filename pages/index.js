@@ -7,13 +7,18 @@ import fs from "fs/promises";
 import path from "path";
 import Link from "next/link";
 
+const PageHead = ({ title }) => {
+  return (
+    <Head>
+      <title>{title}</title>
+    </Head>
+  );
+};
+
 export default function Home({ products }) {
   return (
     <>
-      <Head>
-        <title>Products</title>
-        <meta name="description" content="List of products" />
-      </Head>
+      <PageHead title="Product" />
       <Hello name="Darwin" />
       {products.map((product) => {
         return (
