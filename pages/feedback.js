@@ -66,7 +66,7 @@ export default function Feedback({ feedbackData }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const filePath = buildFeedbackPath();
   const data = extractFeedback(filePath);
 
@@ -74,6 +74,5 @@ export async function getStaticProps() {
     props: {
       feedbackData: data,
     },
-    revalidate: 5,
   };
 }
