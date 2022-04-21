@@ -27,6 +27,8 @@ export default function Home({ products }) {
           </p>
         );
       })}
+
+      <Image src="/dog.jpg" alt="dog" width={250} height={400} />
     </>
   );
 }
